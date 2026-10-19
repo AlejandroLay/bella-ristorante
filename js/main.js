@@ -123,6 +123,9 @@
         panel.classList.toggle('is-active', on);
       });
       if (focus) tab.focus();
+      if (tabsEl.scrollWidth > tabsEl.clientWidth) {
+        tabsEl.scrollTo({ left: tab.offsetLeft - (tabsEl.clientWidth - tab.offsetWidth) / 2, behavior: 'smooth' });
+      }
     };
     tabs.forEach((tab, i) => {
       tab.addEventListener('click', () => selectTab(tab));

@@ -629,9 +629,10 @@ em { font-style: italic; }
   font-family: var(--serif);
   font-weight: 500;
   font-size: 25px;
+  line-height: 1.2;
   letter-spacing: .01em;
   color: var(--cream);
-  margin: 0 0 4px;
+  margin: 0 0 6px;
 }
 .item p { margin: 0 auto; color: var(--muted); font-size: 15px; max-width: 48ch; }
 .item__price {
@@ -1075,7 +1076,7 @@ address { font-style: normal; }
 
 @media (max-width: 1080px) {
   .nav__links, .nav__cta { display: none; }
-  .lang { margin-left: auto; }
+  .lang, .nav__links + .lang { margin-left: auto; }
   .nav__toggle { display: block; margin-left: 4px; }
 }
 
@@ -1132,8 +1133,31 @@ address { font-style: normal; }
   .hero__actions, .prenota__actions { flex-direction: column; }
   .pillars { grid-template-columns: 1fr; gap: 20px; }
   .info-cols { grid-template-columns: 1fr; }
-  .menu__tabs { gap: 4px 22px; }
-  .menu__tabs button { font-size: 21px; }
+  /* pestañas de la carta: una sola fila deslizable */
+  .menu__card { padding-left: 0; padding-right: 0; }
+  .menu__panels, .menu__pdf { padding: 0 24px; }
+  .menu__note { margin: 48px 24px 0; }
+  .menu__tabs {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 26px;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    padding: 0 24px 18px;
+    margin-bottom: 44px;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 40px), transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 40px), transparent 100%);
+  }
+  .menu__tabs::-webkit-scrollbar { display: none; }
+  .menu__tabs::after { content: ""; flex: 0 0 1px; }
+  .menu__tabs button {
+    flex: none;
+    font-size: 22px;
+    padding: 6px 0 12px;
+    scroll-snap-align: center;
+  }
+  .menu__tabs button::after { bottom: 0; }
   .eventi .btn { width: 100%; }
   .frame--small { border-width: 6px; }
 }
