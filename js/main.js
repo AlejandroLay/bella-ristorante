@@ -255,49 +255,8 @@
     pdf.hidden = false;
   }
 
-  /* ---------- horario: abierto ahora (hora de Barcelona) ---------- */
-  const toMin = (hhmm) => { const [h, m] = hhmm.split(':').map(Number); return h * 60 + m; };
-  const HOURS = Object.fromEntries(Object.entries(CONFIG.horario)
-    .map(([d, slots]) => [d, slots.map(([a, b]) => [toMin(a), toMin(b)])]));
-  const fmt = (m) => `${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`;
-  const fill = (s, vars) => s.replace(/\{(\w)\}/g, (_, k) => vars[k]);
-
-  const madridNow = () => {
-    const parts = new Intl.DateTimeFormat('en-GB', {
-      timeZone: 'Europe/Madrid', weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23',
-    }).formatToParts(new Date());
-    const get = (type) => parts.find((p) => p.type === type).value;
-    const day = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(get('weekday'));
-    return { day, min: parseInt(get('hour'), 10) * 60 + parseInt(get('minute'), 10) };
-  };
-
-  const updateStatus = () => {
-    const { day, min } = madridNow();
-    const box = document.getElementById('openStatus');
-    const text = box.querySelector('.status-text');
-    const open = HOURS[day].find(([a, b]) => min >= a && min < b);
-
-    if (open) {
-      box.classList.add('is-open');
-      text.replaceChildren(el('b', '', t.openNow), ' · ' + fill(t.until, { t: fmt(open[1]) }));
-    } else {
-      box.classList.remove('is-open');
-      const later = HOURS[day].find(([a]) => min < a);
-      if (later) {
-        text.textContent = fill(t.today, { t: fmt(later[0]) });
-      } else {
-        for (let i = 1; i <= 7; i++) {
-          const d = (day + i) % 7;
-          if (HOURS[d].length) {
-            const at = fmt(HOURS[d][0][0]);
-            text.textContent = i === 1 ? fill(t.tomorrow, { t: at }) : fill(t.day, { d: t.days[d], t: at });
-            break;
-          }
-        }
-      }
-    }
-    document.querySelectorAll('#hours tr').forEach((tr) => tr.classList.toggle('is-today', Number(tr.dataset.day) === day));
-  };
-  updateStatus();
-  setInterval(updateStatus, 60000);
+  /* ---------- horario: resaltar el día de hoy (hora de Barcelona) ---------- */
+  const weekday = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Madrid', weekday: 'short' }).format(new Date());
+  const today = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(weekday);
+  document.querySelectorAll('#hours tr').forEach((tr) => tr.classList.toggle('is-today', Number(tr.dataset.day) === today));
 })();

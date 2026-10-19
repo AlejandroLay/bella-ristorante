@@ -363,26 +363,7 @@ em { font-style: italic; }
   max-width: 30ch;
   margin: 0 0 44px;
 }
-.hero__actions { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 40px; }
-
-.hero__status {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 12px;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin: 0;
-}
-.dot {
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: var(--muted);
-  flex: none;
-}
-.is-open .dot { background: #8fbf86; box-shadow: 0 0 0 4px rgba(143, 191, 134, .15); }
-.is-open .status-text b { color: var(--cream); font-weight: 400; }
+.hero__actions { display: flex; flex-wrap: wrap; gap: 16px; }
 
 .hero__media {
   position: relative;
@@ -1108,7 +1089,6 @@ address { font-style: normal; }
   .hero .vesuvio--hero { margin: 26px auto 22px; width: 160px; }
   .hero__sub { margin: 0 auto 36px; }
   .hero__actions { justify-content: center; }
-  .hero__status { justify-content: center; }
   .hero__media { justify-self: center; width: min(78%, 340px); margin-top: 24px; }
   .hero__scroll { display: none; }
 
