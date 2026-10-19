@@ -1,7 +1,7 @@
 {
   "name": "Bella Ristorante",
   "short_name": "Bella",
-  "description": "Auténtica cocina napolitana en Sant Gervasi: pasta, pizza al horno y tiramisù casero. C/ Muntaner 328, Barcelona. Reserva tu mesa online.",
+  "description": "Restaurante napolitano en Muntaner 328 (Sant Gervasi). Pasta, pizza al horno y un tiramisù que hacemos cada día. De martes a domingo. Reserva online.",
   "start_url": "./",
   "display": "browser",
   "background_color": "#1a1917",

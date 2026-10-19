@@ -452,41 +452,6 @@ em { font-style: italic; }
 }
 .vesuvio.is-in path { stroke-dashoffset: 0; }
 
-.quote {
-  margin: 40px 0;
-  padding: 0 0 0 28px;
-  border-left: 1px solid var(--gold);
-}
-.quote p {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: clamp(20px, 1.8vw, 24px);
-  line-height: 1.45;
-  color: var(--gold-hi);
-  margin: 0;
-}
-
-.pillars {
-  list-style: none;
-  margin: 48px 0 0;
-  padding: 32px 0 0;
-  border-top: 1px solid var(--line-soft);
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  font-size: 14px;
-  line-height: 1.5;
-  color: var(--muted);
-}
-.pillars span {
-  display: block;
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 22px;
-  color: var(--cream);
-  margin-bottom: 6px;
-}
-
 /* ---------- cabeceras de sección ---------- */
 
 .section-head { text-align: center; margin: 0 auto clamp(56px, 7vw, 96px); max-width: 760px; }
@@ -1131,7 +1096,6 @@ address { font-style: normal; }
   .nav.is-scrolled .nav__brand img { height: 38px; }
   .btn { width: 100%; }
   .hero__actions, .prenota__actions { flex-direction: column; }
-  .pillars { grid-template-columns: 1fr; gap: 20px; }
   .info-cols { grid-template-columns: 1fr; }
   /* pestañas de la carta: una sola fila deslizable */
   .menu__card { padding-left: 0; padding-right: 0; }
